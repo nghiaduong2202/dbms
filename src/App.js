@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import ViewAudio from "./Component/ViewAudio/ViewAudio";
+import Footer from "./Component/Footer/Footer";
+import Header from "./Component/Header/Header";
+import SideBar from "./Component/SideBar/SideBar";
+import AudioRank from "./Component/AudioRank/AudioRank";
+import { Layout, Space } from "antd";
+import { Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Space>
+      <Layout style={{ width: "15vw" }}>
+        <Layout.Sider>
+          <SideBar />
+        </Layout.Sider>
+      </Layout>
+      <Layout style={{ width: "85vw" }}>
+        <Layout.Header>
+          <Header />
+        </Layout.Header>
+        <Layout.Content>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <>
+                  <ViewAudio />
+                </>
+              }
+            />
+            <Route
+              path='/audioRank'
+              element={
+                <>
+                  <AudioRank />
+                </>
+              }
+            />
+          </Routes>
+        </Layout.Content>
+        <Layout.Footer>
+          <Footer />
+        </Layout.Footer>
+      </Layout>
+    </Space>
   );
 }
 
